@@ -1,0 +1,217 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500|Roboto:300,400,500&display=swap"
+      rel="stylesheet"
+    />
+    <meta
+      name="description"
+      content="Web site created using create-react-app"
+    />
+
+    <title>30 Days Of React App</title>
+    <style>
+      /* == General style === */
+      * {
+        box-sizing: border-box;
+        padding: 0;
+        margin: 0;
+      }
+
+      html,
+      body {
+        height: 100%;
+        line-height: 1.5;
+        font-family: 'Montserrat';
+        font-weight: 300;
+        color: black;
+      }
+
+      .root {
+        min-height: 100%;
+        position: relative;
+      }
+
+      .header-wrapper,
+      .main-wrapper,
+      .footer-wrapper {
+        width: 85%;
+        margin: auto;
+      }
+
+      .main-wrapper{
+        background-color: beige;
+      }
+
+      .header-wrapper,
+      .main-wrapper {
+        padding: 10px;
+        margin: 2px auto;
+      }
+
+      h1 {
+        font-size: 70px;
+        font-weight: bold;
+      }
+
+      h2,
+      h3 {
+        font-weight: bold;
+      }
+
+      header {
+        background-color: #61dbfb;
+        padding: 10px;
+      }
+
+      main {
+        padding: 10px;
+        padding-bottom: 60px;
+        /* Height of the footer */
+      }
+
+      ul {
+        margin-left: 15px;
+      }
+
+      ul li {
+        list-style: none;
+      }
+
+      .tech-images {
+        background-color: bisque;
+        padding: 10px 30px;
+        border-radius: 5px;
+      }
+      .tech-images h2{
+        text-align: center;
+        font-weight: bold;
+      }
+
+      .flex-container{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px;
+      }
+
+      img {
+        padding: 10px;
+        height: 200px;
+        width: auto;
+
+      }
+      .form{
+        background-color:lightskyblue;
+        margin: 30px 0;
+        border-radius: 10px;
+        text-align: center;
+        padding: 10px;
+      }
+      .from h2, p{
+        margin: 20px;
+      }
+
+      .form p{
+        font-size: small;
+      }
+      .input-container{
+        display: flex;
+        justify-content: center;
+      }
+
+      input{
+        padding: 5px;
+        margin: 10px;
+        border-width: 0;
+        border-radius: 5px;
+      }
+
+      ::placeholder{
+        font-size: smaller;
+        font-weight: lighter;
+        font-family: 'Montserrat';
+      }
+
+      input[type=reset]{
+        font-family: 'Montserrat';
+        background-color:rgb(244, 90, 62);
+        border: 0;
+        font-size: smaller;
+        color: white;
+        padding: 5px 80px;
+      }
+
+      .user-card{
+        background-color: white;
+        margin: 30px 0;
+        width: 100%;
+        border-radius: 5px;
+        padding: 20px;
+      }
+
+      .user-card p {
+        font-weight: lighter;
+        font-size: small;
+        margin: 10px 0;
+        padding: 0;
+
+      }
+
+      .user-pic img{
+        width: 200px;
+        height: 200px;
+        border-radius: 50%;
+      }
+
+      .verified, .joined-container{
+        display: flex;
+        align-items: center;
+      }
+      .verified img, .joined-container img{
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+      }
+
+      .hobbies-container ul{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+      }
+
+      .hobbies-container li{
+        display: inline;
+        background-color: aquamarine;
+        margin: 10px;
+        padding: 5px 10px;
+        border-radius: 5px;
+        font-size: smaller;
+      }
+
+      footer {
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+        height: 50px;
+        /* Height of the footer */
+        background: #6cf;
+      }
+
+      .footer-wrapper {
+        font-weight: 400;
+        text-align: center;
+        line-height: 1.6;
+        
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
+</html>
