@@ -4,78 +4,108 @@ import React from 'react'
 import {StrictMode} from 'react';
 import {createRoot} from 'react-dom/client';
 // To get the root element from the HTML document
-import pic from './images/nba.jpeg'
+import user_pic from './images/profile.png'
+import html_logo from './images/html_logo.png'
+import css_logo from './images/css_logo.png'
+import react_logo from './images/react_logo.png'
+import verified_logo from './images/verified_logo.png'
+import clock_icon from './images/clock_icon.png'
 
-// JSX element, header
-const welcome = 'Welcome to 30 Days Of React'
-const title = 'Getting Started React'
-const subtitle = 'JavaScript Library'
-const author = {
-  firstName: 'Asabeneh',
-  lastName: 'Yetayeh',
+
+
+
+const showDate = (time) => {
+  const months = [
+    'January',
+    'February',
+    'March',
+    'April',
+    'May',
+    'June',
+    'July',
+    'August',
+    'September',
+    'October',
+    'November',
+    'December',
+  ]
+
+  const month = months[time.getMonth()].slice(0, 3)
+  const year = time.getFullYear()
+  const date = time.getDate()
+  return ` ${month} ${date}, ${year}`
 }
-const date = 'Oct 2, 2020'
 
-// JSX element, header
-const header = (
-  <header>
+//React component
+const Header = ({
+  data: {
+    welcome,
+    title,
+    subtitle,
+    author: {firstName, lastName},
+    date
+  }
+}) => {
+  return (
+    <header>
     <div className='header-wrapper'>
       <h1>{welcome}</h1>
       <h2>{title}</h2>
       <h3>{subtitle}</h3>
       <p>
-        Instructor: {author.firstName} {author.lastName}
+        Instructor: {firstName} {lastName}
       </p>
-      <small>Date: {date}</small>
+      <small>{showDate(date)}</small>
     </div>
   </header>
-)
+  )
+}
 
-const numOne = 3
-const numTwo = 2
-
-const result = (
+const Result = (props) => (
   <p>
-    {numOne} + {numTwo} = {numOne + numTwo}
+    {props.numOne} + {props.numTwo} = {props.numOne + props.numTwo}
   </p>
 )
 
-const yearBorn = 1820
-const currentYear = new Date().getFullYear()
-const age = currentYear - yearBorn
-const personAge = (
+
+const age = () => {
+  const yearBorn = 1820
+  const currentYear = new Date().getFullYear()
+
+  return currentYear - yearBorn
+}
+
+const PersonAge = (props) => (
   <p>
-    {' '}
-    {author.firstName} {author.lastName} is {age} years old
+    {props.firstName} {props.lastName} is {age()} years old.
   </p>
 )
 
-const techs = ['HTML', 'CSS', 'JavaScript']
-const techsFormatted = techs.map((tech) => <li key = {tech}>{tech}</li>)
+const TechsFormatted = ({techs}) =>( techs.map((tech) => <li key = {tech}>{tech}</li>))
 
-const user = (
+const User = ({user_image}) => (
   <div>
-    <img src={pic} alt='nba pic'/>
+    <img src={user_image} alt='nba pic'/>
   </div>
 )
 
-const tech_images = (
+const TechImages = ({techImages: {html, css, react}}) => (
   <div className='tech-images'>
     <h2>Front End Technologies</h2>
     <div className='flex-container'>
 
-        <img src = {require('./images/html_logo.png')} alt = 'html_logo'></img>
+        <img src = {html} alt = 'html_logo'></img>
 
-        <img src = {require('./images/css_logo.png')} alt = 'html_logo'></img> 
+        <img src = {css} alt = 'css_logo'></img> 
     
-        <img src = {require('./images/react_logo.png')} alt = 'html_logo'></img> 
+        <img src = {react} alt = 'react_logo'></img> 
     
     </div>
 
   </div>
 )
 
-const form = (
+const Form = () => (
   <div className='form'>
     <h2>SUBSCRIBE</h2>
     <p>Sign up with your email address to receive news and updates.</p>
@@ -98,17 +128,19 @@ const interests = ['Travelling', 'Foodie', 'Cycling', 'Swimming', 'Basketball', 
 
 const interestsFormatted = interests.map((interest) => <li key={interest}>{interest}</li>)
 
-const joinedDate = 'Sep 18, 2022'
-
-const card = (
+const Card = ({user: {firstName, lastName, stylePic, profileImage, verifiedLogo, 
+  clockIcon, joinedDate}}) => (
   <div className='user-card'>
+  {/*
     <div className='user-pic'>
       <img src = {require('./images/profile.png')} alt = 'kobe'/>
     </div>
+  */}
+    <img src={profileImage} style = {stylePic} alt = 'Kobe'/>
     
     <div className='verified'>
-      <h4>RAM BAHADUR THAPA</h4>
-      <img img src={require('./images/verified_logo.png')} alt = 'verified'/>
+      <h4>{firstName} {lastName}</h4>
+      <img img src={verifiedLogo} alt = 'verified'/>
     </div>
     <p>Undergraduate, Nepal</p>
     <h4>HOBBIES</h4>
@@ -118,7 +150,7 @@ const card = (
       </ul>
     </div>
     <div className='joined-container'>
-      <img src={require('./images/clock_icon.png')} alt='clock'/>
+      <img src={clockIcon} alt='clock'/>
       <p>
         Joined on {joinedDate}
       </p>
@@ -126,10 +158,33 @@ const card = (
   </div>
 )
 
+const hexaColor = () => {
+  let str = '0123456689abcdef'
+  let color = ''
+  for (let i = 0; i < 6; i++){
+    let index = Math.floor(Math.random() * 10)
+    color += str[index]
+  }
+  return '#' + color
+}
 
-// JSX element, main
-const main = (
-  <main>
+const colors = [hexaColor(), hexaColor(), hexaColor(), hexaColor(), hexaColor()]
+
+//React component
+const HexaColor = () => (
+  <div className='hexa-container'>
+      <div style={{backgroundColor: `${colors[0]}`}}>{colors[0]}</div>
+      <div style={{backgroundColor: `${colors[1]}`}}>{colors[1]}</div>
+      <div style={{backgroundColor: `${colors[2]}`}}>{colors[2]}</div>
+      <div style={{backgroundColor: `${colors[3]}`}}>{colors[3]}</div>
+      <div style={{backgroundColor: `${colors[4]}`}}>{colors[4]}</div>
+    </div>
+  
+)
+
+const Main = ({techs, numOne, numTwo, techImages, user}) =>{
+  return(
+    <main>
     <div className='main-wrapper'>
       <p>
         Prerequisite to get started{' '}
@@ -138,22 +193,24 @@ const main = (
         </strong>
         :
       </p>
-      <ul>{techsFormatted}</ul>
-      {result}
-      {personAge}
-      {user}
-      {tech_images}
-      {form}
-      {card}
+      <ul><TechsFormatted techs = {techs}/></ul>
+      <Result numOne = {numOne}  numTwo = {numTwo} />
+      <PersonAge firstName = "Ram" lastName = "Bahadur Thapa"/>
+      <User user_image={user_pic}/>
+      <TechImages techImages = {techImages}/>
+      <Form/>
+      <Card user = {user}/>
+      <HexaColor/>
       
     </div>
   </main>
-)
+  )
+}
+  
 
 const copyRight = 'Copyright 2022'
 
-// JSX element, footer
-const footer = (
+const Footer = () =>(
   <footer>
     <div className='footer-wrapper'>
       <p>{copyRight}</p>
@@ -161,20 +218,61 @@ const footer = (
   </footer>
 )
 
-// JSX element, app
-const app = (
-  <div className='app'>
-    {header}
-    {main}
-    {footer}
+//React component, App
+const App = () =>{
+  const data = {
+    welcome: 'Welcome to 30 Days Of React',
+    title: 'Getting Started React',
+    subtitle: 'JavaScript Library',
+    author: {
+      firstName: 'Ram',
+      lastName: 'Bahadur Thapa',
+    },
+    date: new Date(), // date needs to be formatted to a human readable format
+  }
+
+  let numOne = 5
+  let numTwo = 20
+
+  const techs = ['HTML', 'CSS', 'JavaScript']
+
+  const techImages = {
+    html: html_logo, 
+    css: css_logo, 
+    react: react_logo
+  }
+
+  const user = {...data.author, 
+    stylePic: {
+      width: '200px',
+      height: '200px',
+      borderRadius: '50%'
+    },
+    profileImage: user_pic, 
+    verifiedLogo: verified_logo, 
+    clockIcon: clock_icon,
+    joinedDate: 'Sep 18, 2022'
+  }
+
+  return(
+    <div className='app'>
+    <Header data={data}/>
+    <Main techs = {techs} 
+      numOne = {numOne}
+      numTwo = {numTwo}
+      techImages = {techImages}
+      user = {user}
+    />
+    <Footer/>
   </div>
-)
+  )
+}
 
 const root = createRoot(document.getElementById('root'))
 
 root.render(
   <StrictMode>
-    {app}
+    <App/>
   </StrictMode>
 );
 

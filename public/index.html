@@ -94,6 +94,7 @@
 
       .flex-container{
         display: flex;
+        flex-wrap: wrap;
         flex-direction: row;
         justify-content: space-between;
         align-items: center;
@@ -113,7 +114,7 @@
         text-align: center;
         padding: 10px;
       }
-      .from h2, p{
+      .form h2, .form p{
         margin: 20px;
       }
 
@@ -163,7 +164,7 @@
 
       }
 
-      .user-pic img{
+      .user-card img{
         width: 200px;
         height: 200px;
         border-radius: 50%;
@@ -192,6 +193,18 @@
         padding: 5px 10px;
         border-radius: 5px;
         font-size: smaller;
+      }
+
+      .hexa-container{
+        display: flex;
+        flex-direction: column;
+      }
+
+      .hexa-container div {
+        margin: 2px;
+        text-align: center;
+        padding: 10px;
+        border-radius: 2px;
       }
 
       footer {
